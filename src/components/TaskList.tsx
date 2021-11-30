@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
 import "../styles/tasklist.scss";
 
 import { FiTrash, FiCheckSquare } from "react-icons/fi";
@@ -14,19 +13,8 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  useEffect(() => {
-    const tasks = JSON.parse(localStorage.getItem("@tasks-rts")!);
-
-    if (tasks) setTasks(tasks);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("@tasks-rts", JSON.stringify(tasks));
-  }, [tasks]);
-
   function handleCreateNewTask() {
     if (!newTaskTitle.trim()) {
-      toast.error("Preencha o campo abaixo!");
       return;
     }
 
@@ -38,7 +26,6 @@ export function TaskList() {
 
     setTasks(prevState => [...prevState, newTask]);
     setNewTaskTitle("");
-    toast.success("task adicionada com sucesso!");
   }
 
   function handleToggleTaskCompletion(id: number) {
@@ -54,7 +41,6 @@ export function TaskList() {
     const filteredTask = tasks.filter(task => task.id !== id);
 
     setTasks(filteredTask);
-    toast.success("task removida com sucesso!");
   }
 
   return (
@@ -112,7 +98,6 @@ export function TaskList() {
           </ul>
         </main>
       </section>
-      <Toaster />
     </>
   );
 }
