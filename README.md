@@ -14,3 +14,11 @@ Nesse desafio, você deverá criar uma aplicação para treinar o que aprendeu a
 - React Hot Toast
 - Webpack
 - Babel
+
+## Execute a aplicação
+
+- Clone o repo `git clone https://github.com/ronaldprofile/challenge-concepts-react.git`
+- Instale as depedências `yarn`
+- Execute o servidor `yarn dev`
+
+A aplicação está disponível em [localhost:8080](http://localhost:8080).
